@@ -36,6 +36,16 @@
           class="product__drag-icon smartphone-only"
         />
       </div>
+      <div class="credit">
+        <div class="credit-text" style="color: red">
+          <span>Pay ${{ productPrice / creditNumber }} at the end of the month for {{ creditNumber }} months </span>
+        </div>
+        <SfButton
+          class="sf-button"
+        >
+          {{ $t('Buy in credit') }}
+        </SfButton>
+      </div>
       <div class="product__price-and-rating">
         <SfPrice
           :regular="$fc(productPrice)"
@@ -160,6 +170,7 @@ import { useCart } from '~/modules/checkout/composables/useCart';
 import ProductTabs from '~/modules/catalog/product/components/tabs/ProductTabs.vue';
 import { useProductGallery } from '~/modules/catalog/product/composables/useProductGallery';
 import { TabsConfig, useProductTabs } from '~/modules/catalog/product/composables/useProductTabs';
+import {useCredit} from "~/composables";
 
 export default defineComponent({
   name: 'SimpleProduct',
@@ -211,10 +222,10 @@ export default defineComponent({
     const averageRating = computed(() => getAverageRating(props.product));
     const addToCartError = computed(() => cartError.value?.addItem?.message);
     const firstName = userGetters.getFirstName(user.value);
-
-
+    const creditNumber = useCredit();
 
     return {
+      creditNumber,
       addItem,
       addItemToWishlist: addOrRemoveItem,
       averageRating,

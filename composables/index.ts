@@ -6,8 +6,9 @@
  *
  * @packageDocumentation
  */
+
+export * from './useCredit';
 export * from './useApi';
-export * from './useCustomerCredit';
 export * from '../modules/customer/composables/useAddresses';
 export * from '../modules/checkout/composables/useBilling';
 export * from '../modules/checkout/composables/useCart';
