@@ -5157,6 +5157,7 @@ export interface Query {
   /** Returns information about shopping cart */
   cart?: Maybe<Cart>;
   categories?: Maybe<CategoryResult>;
+  customerCredit?: Maybe<Scalars['Int']>;
   /**
    * The category query searches for categories that match the criteria specified in the search and filter attributes.
    * @deprecated Use 'categoryList' query instead of 'category' query
